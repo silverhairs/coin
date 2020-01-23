@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
-import './homepage.dart';
+import './screens/home_screen.dart';
 
-void main() => runApp(Coin());
+Future main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+  return runApp(Coin());
+}
 
 class Coin extends StatelessWidget {
   @override
@@ -13,7 +18,10 @@ class Coin extends StatelessWidget {
         primaryColor: Colors.purple,
         textTheme: ThemeData.dark().textTheme.copyWith(
               body1: GoogleFonts.sourceSansPro(
-                textStyle: TextStyle(fontSize: 16, color: Colors.white),
+                textStyle: TextStyle(
+                  fontSize: 16,
+                  color: Colors.white,
+                ),
               ),
             ),
       ),
