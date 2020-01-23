@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -103,16 +104,21 @@ class _HomepageState extends State<Homepage> {
                       ],
                     ),
                     Center(
-                      child: Text(
-                        '${currencyValue} $selectedValue',
-                        style: GoogleFonts.sourceSansPro(
-                          textStyle: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 45,
-                            color: Colors.white,
-                          ),
-                        ),
-                      ),
+                      child: currencyValue == null
+                          ? SpinKitPouringHourglass(
+                              size: 45,
+                              color: Colors.white,
+                            )
+                          : Text(
+                              '$currencyValue $selectedValue',
+                              style: GoogleFonts.sourceSansPro(
+                                textStyle: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 45,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ),
                     )
                   ],
                 ),
