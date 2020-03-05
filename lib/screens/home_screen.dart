@@ -19,7 +19,7 @@ class _HomepageState extends State<Homepage> {
     exchangeData =
         await ExchangeData().getExchangeData(selectedCrypto, selectedValue);
     setState(() {
-      currencyValue = exchangeData['$selectedCrypto$selectedValue']['last']
+      currencyValue = exchangeData['$selectedValue']
           .toStringAsFixed(1);
     });
     return exchangeData;
