@@ -87,12 +87,12 @@ const List<String> kCurrenciesList = [
   'ZAR'
 ];
 
-String addParams(List list) {
-  String params = '';
-  list.forEach((fiat) {
-    params += '$fiat,';
+String addParams(List paramsList) {
+  String param = '';
+  paramsList.forEach((fiat) {
+    param += '$fiat,';
   });
-  return params;
+  return param;
 }
 
 String api =
