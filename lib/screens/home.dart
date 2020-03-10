@@ -86,26 +86,3 @@ class _HomeState extends State<Home> {
     );
   }
 }
-
-class BottomNav extends StatelessWidget {
-  BottomNav({@required this.icon, @required this.title});
-  final Icon icon;
-  final String title;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.only(top: 5),
-      height: 50,
-      child: Column(
-        children: <Widget>[
-          this.icon,
-          Text(
-            title,
-            style: Theme.of(context).textTheme.subtitle,
-          )
-        ],
-      ),
-    );
-  }
-}
