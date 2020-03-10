@@ -2,7 +2,6 @@ import 'package:currency_translate/components/currencies_list.dart';
 import 'package:currency_translate/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
@@ -12,6 +11,11 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  List<Text> cryptoNames = cryptoList.values
+      .map((fiat) =>
+          Text('$fiat', style: TextStyle(fontSize: 20, color: Colors.white)))
+      .toList();
+
   Map<String, dynamic> data;
 
   Future getData() async {
@@ -33,32 +37,6 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: Container(
-        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 3),
-        color: CoinColors.darkBlue,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
-            BottomNav(
-              icon: Icon(FontAwesomeIcons.sync, color: Colors.white),
-              title: 'Exchange',
-            ),
-            BottomNav(
-              icon: Icon(FontAwesomeIcons.chartLine, color: Colors.white),
-              title: 'Analytics',
-            ),
-            BottomNav(
-              icon: Icon(FontAwesomeIcons.coins, color: Colors.white),
-              title: 'Currencies',
-            ),
-            BottomNav(
-              icon:
-                  Icon(FontAwesomeIcons.angleDoubleRight, color: Colors.white),
-              title: 'More',
-            )
-          ],
-        ),
-      ),
       backgroundColor: CoinColors.bluredDarkBlue,
       extendBody: false,
       body: Column(
@@ -92,7 +70,7 @@ class _HomeState extends State<Home> {
             child: CupertinoPicker(
               useMagnifier: false,
               backgroundColor: Color(0xFF152B55),
-              children: fiatList,
+              children: cryptoNames,
               itemExtent: 35,
               onSelectedItemChanged: (index) {
                 print(index);
